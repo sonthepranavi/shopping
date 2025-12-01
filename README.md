@@ -180,7 +180,7 @@ Here are the *exact click-wise steps* to set up *Gmail email notifications in Je
 ### *1. Open Jenkins Dashboard*
 
 → Click *Manage Jenkins*
-→ Click *Manage Plugins*
+→ Click system
 
 ### *2. Install plugin*
 
@@ -206,7 +206,7 @@ Scroll down until you see *E-mail Notification*
 ### *3. Fill settings*
 
 → In *SMTP server* type: smtp.gmail.com
-→ Tick *Use SMTP Authentication*
+Advanced → Tick *Use SMTP Authentication*
  → *User Name:* your Gmail (example: [pranavi@gmail.com](mailto:pranavi@gmail.com))
  → *Password:* (leave empty for now)
 → Tick *Use SSL*
@@ -218,7 +218,9 @@ Scroll down until you see *E-mail Notification*
 ---
 
 # ✅ *PART 3 — Create Gmail App Password*
-
+((((Gmail profile --manage google account--security sigin---2 step verifiucation --enter password
+ --app passwords  -- app name =jenkins ok 
+ click copy paste password )))
 ### *1. Open Google account*
 
 → Visit *myaccount.google.com*
@@ -333,16 +335,5 @@ Scroll down until you see *E-mail Notification*
 → *Triggers:* tick *Failure, **Success, or **Always*
 → *Subject/Content:* leave default or edit
 → Click *Save*
-
----
-
-# 📌 Done! Jenkins email notification is fully set.
-
-If you want, I can also send:
-✔ Screenshot-style instructions
-✔ Exact Gmail error fixes (AUTH failed, port blocked, etc.)
-✔ Steps for Outlook/Yahoo SMTP too
-
-Just tell me!
 
 ---
