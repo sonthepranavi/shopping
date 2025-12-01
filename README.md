@@ -115,7 +115,7 @@ https://abc123.ngrok-free.dev/github-webhook/
 ```
 
 ---
-
+-------------------------------------------------------
 ### **B) Add the Webhook in GitHub (Menu Clicks)**
 
 Follow these clicks:
@@ -171,78 +171,178 @@ Jenkins → Job → **Configure → Build Triggers**
 
 # 🚀 **EXERCISE-2: JENKINS EMAIL NOTIFICATION (SHORT VERSION)**
 
----
-
-## **STEP 1 — Gmail Setup**
-
-### Enable 2-Step Verification:
-
-myaccount.google.com → Security → **2-Step Verification → ON**
-
-### Generate App Password:
-
-Security → **App Passwords**
-Choose:
-
-* App: **Other > Jenkins-Demo**
-
-Copy the 16-digit password.
+Here are the *exact click-wise steps* to set up *Gmail email notifications in Jenkins* — no confusion, just click → click → type.
 
 ---
 
-## **STEP 2 — Install Plugin**
+# ✅ *PART 1 — Install Email Extension Plugin*
 
-Jenkins → Manage Jenkins → Manage Plugins →
-Install **Email Extension Plugin**
+### *1. Open Jenkins Dashboard*
 
----
+→ Click *Manage Jenkins*
+→ Click *Manage Plugins*
 
-## **STEP 3 — Global Email Settings**
+### *2. Install plugin*
 
-Manage Jenkins → Configure System
-
-### **E-mail Notification**
-
-* SMTP: smtp.gmail.com
-* Auth: ✔
-* Username: your Gmail
-* Password: app password
-* SSL: ✔
-* Port: 465
-
-### **Extended Email Notification**
-
-* SMTP: smtp.gmail.com
-* Port: 465
-* SSL: ✔
-* Credentials: Gmail + app password
+→ Open *Available* tab
+→ Search: *Email Extension Plugin*
+→ Tick the checkbox
+→ Click *Install without restart*
+→ After install, click *Go back to Dashboard*
 
 ---
 
-## **STEP 4 — Job Email Setup**
+# ✅ *PART 2 — Configure Gmail SMTP (Basic E-mail Notification)*
 
-Job → Configure → Post-build Actions →
-**Editable Email Notification**
+### *1. Go to main settings*
 
-Fill:
+→ Click *Manage Jenkins*
+→ Click *Configure System*
 
-* Recipients: your email
-* Content Type: text/html
-* Trigger: Success / Failure
+### *2. Find: E-mail Notification*
 
-Save.
+Scroll down until you see *E-mail Notification*
+
+### *3. Fill settings*
+
+→ In *SMTP server* type: smtp.gmail.com
+→ Tick *Use SMTP Authentication*
+ → *User Name:* your Gmail (example: [pranavi@gmail.com](mailto:pranavi@gmail.com))
+ → *Password:* (leave empty for now)
+→ Tick *Use SSL*
+→ In *SMTP Port* type: 465
+→ (Optional) *Reply-To Address:* your email
+
+### *4. Don’t save yet — go to part 3*
 
 ---
 
-# 🎯 **RESULT**
+# ✅ *PART 3 — Create Gmail App Password*
 
-Whenever a build happens:
+### *1. Open Google account*
 
-✔ You receive **Build Success** email
-❌ You receive **Build Failed** email
+→ Visit *myaccount.google.com*
+
+### *2. Security*
+
+→ Click *Security*
+→ Scroll to *Signing in to Google*
+→ Click *2-Step Verification*
+→ Turn it ON (enter OTP)
+
+### *3. Create App Password*
+
+→ After 2-step is on, go back to *Security*
+→ Click *App Passwords*
+→ Enter password
+→ In Select app, choose *Other (Custom name)*
+→ Type: Jenkins
+→ Click *Generate*
+
+### *4. Copy the 16-digit password*
+
+(Google shows a yellow box with 16 letters)
+→ Copy it
+→ Save in Notepad
 
 ---
 
-If you want, I can convert **this final version into a PDF** for printing.
-You said:
-if ngrok already not  exists then only i should go to step3 right
+# ✅ *PART 4 — Add Gmail Credentials to Jenkins*
+
+### *1. Back to Jenkins → Configure System*
+
+→ Go to *E-mail Notification* again
+
+### *2. Add password*
+
+→ Tick *Use SMTP Authentication*
+→ *User Name:* your Gmail
+→ *Password:* paste the 16-digit app password
+
+### *3. Save*
+
+→ Scroll bottom → Click *Save*
+
+---
+
+# ✅ *PART 5 — Configure Extended Email Notification*
+
+### *1. Go again*
+
+→ Manage Jenkins
+→ Configure System
+→ Scroll to *Extended E-mail Notification*
+
+### *2. Fill settings*
+
+→ *SMTP Server:* smtp.gmail.com
+→ *Port:* 465
+→ Tick *Use SSL*
+→ *Credentials:*
+ → Click *Add*
+ → Enter:
+  • Username → Gmail
+  • Password → 16-digit app password
+ → Click *Add* → Select this credential
+
+### *3. Save*
+
+→ Scroll down → *Save*
+
+---
+
+# ✅ *PART 6 — Test Email from Jenkins*
+
+### *1. Test from Basic Email*
+
+→ Manage Jenkins
+→ Configure System
+→ Go to *E-mail Notification*
+→ Click *Test configuration*
+→ Enter your email
+→ Click *Test*
+
+### *2. Test from Extended Email*
+
+→ Go to *Extended E-mail Notification*
+→ Click *Test configuration*
+→ Enter your email
+→ Click *Test*
+
+📩 You should get an email from Jenkins.
+
+---
+
+# ✅ *PART 7 — Add Email Notification to a Job*
+
+### *1. Open the Job*
+
+→ Go to *Dashboard*
+→ Click your job
+→ Click *Configure*
+
+### *2. Add post-build action*
+
+→ Scroll to bottom
+→ Click *Add Post-build Action*
+→ Select *Editable Email Notification*
+
+### *3. Fill job settings*
+
+→ *Project Recipient List:* enter emails
+→ *Triggers:* tick *Failure, **Success, or **Always*
+→ *Subject/Content:* leave default or edit
+→ Click *Save*
+
+---
+
+# 📌 Done! Jenkins email notification is fully set.
+
+If you want, I can also send:
+✔ Screenshot-style instructions
+✔ Exact Gmail error fixes (AUTH failed, port blocked, etc.)
+✔ Steps for Outlook/Yahoo SMTP too
+
+Just tell me!
+
+---
