@@ -1,4 +1,6 @@
 # kubernetes
+first open docker and keep 
+next powershell
 minikube start
 docker login
 minikube version
